@@ -89,13 +89,13 @@ double Reversa(double M[N][n])
 		
 	}
 	printf("\n\n");
-	
-	return x[N];
+	for(i=0;i<N;i++)
+		return x[i];
 }
 
 main(int argc, char **argv)
 {
-	double x[N]={0}, x0[N]={0.1,0.1,-0.1}, F[N], J[N][N], y[N][n], m[N];
+	double x[N]={0}, x0[N]={0.1,0.1,-0.1}, F[N], J[N][N], y[N][n], m, rev[N];
 	double er = 1e-6, tol=0., norma, norm;
 	double (*equacao[N])()={f1,f2,f3};
 	int i, j, cont=0.;
@@ -120,8 +120,14 @@ main(int argc, char **argv)
 		imprimi(y);			//Imprimindo matriz completa
 		escalonamento(y);		//Fazendo o escalonamento da matriz
 		imprimi(y);				//Imprimindo a matriz escalonada
-		Reversa(y);				//Substituição reversa
-	
+		
+		for(i=0; i<N; i++)			
+			rev[i]=Reversa(y);	//Substituição reversa
+		for(i=0; i<N; i++)
+			printf("%.2lf\t", rev[i]);				
+		printf("\n");
+		
+		
 		cont++;				//contador para as iterações
 		
 		
